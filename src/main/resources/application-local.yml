@@ -1,7 +1,3 @@
-# please don't put any local settings to application.yml
-server:
-  port: 8080
-
 spring:
   datasource:
     platform: mariadb
@@ -18,8 +14,11 @@ spring:
     enabled: true
     change-log: classpath:/db/changelog/db.changelog-master.xml
 
-kafka:
-  logging.level.root: INFO
-  com.education.kafka.addres: 127.0.0.1:9092
-  com.education.kafka.topic: my-topic
-  com.education.kafka.group.id: my-group
+
+kafka.logging.level.root: INFO
+kafka.com.education.address: 127.0.0.1:9092
+kafka.com.education.topic: test-topic
+kafka.com.education.consumer.groupId: defaultGrpId
+kafka.com.education.consumer.clientId: defaultClId
+kafka.request.timeout.ms: 20000
+kafka.bootstrap.servers: http://localhost:9092

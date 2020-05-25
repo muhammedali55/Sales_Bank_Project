@@ -1,0 +1,9 @@
+ext {
+    versions = [
+            mariadb: "2.6.0",
+
+    ]
+    libs = [
+            mariadb: "org.mariadb.jdbc:mariadb-java-client:$versions.mariadb",
+    ]
+}

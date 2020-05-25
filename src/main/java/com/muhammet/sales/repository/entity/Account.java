@@ -1,18 +1,18 @@
 package com.muhammet.sales.repository.entity;
 
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.Currency;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotNull;
-import java.util.Currency;
-import java.util.HashSet;
-import java.util.Set;
 
 @Data
 @Builder
@@ -20,23 +20,28 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 @Table(name = "table_account")
-@ApiModel(value = "account entity",description = "get all account datas on database")
 public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty(value = "search my id for account")
     long id;
-    @NotNull
-    @Column(name = "customer_id")
-    long customer_id;
-    @NotNull
-    long account_type_id;
-    @NotNull
-    String account_number;
-    @Digits(integer = 13,fraction = 2)
-    Currency balance;
 
+
+  @NotNull
+  @Column(name = "customer_id")
+  long customer_id;
+
+  @NotNull
+  @Column(name = "account_type_id")
+  long account_type_id;
+
+  @NotNull
+  @Column(name = "account_number")
+  String account_number;
+
+  @Column(name = "balance")
+  Currency balance;
 
 //    @OneToMany(fetch = FetchType.EAGER)
 //    @JoinColumn(name = "account_id")
