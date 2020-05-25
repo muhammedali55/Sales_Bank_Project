@@ -22,12 +22,11 @@ import lombok.NoArgsConstructor;
 @Table(name = "table_account")
 public class Account {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @ApiModelProperty(value = "search my id for account")
-    long id;
-
-
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @ApiModelProperty(value = "search my id for account")
+  long id;
+  
   @NotNull
   @Column(name = "customer_id")
   long customer_id;
