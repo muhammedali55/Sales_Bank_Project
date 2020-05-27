@@ -29,18 +29,17 @@ repositories {
 dependencies {
 
     compile libs.mariadb
-    compile group: 'org.liquibase', name: 'liquibase-core', version: '3.8.9'
-    compileOnly 'org.projectlombok:lombok:1.18.12'
-    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+    compile libs.liquibase
+    compileOnly libs.lombok
+    annotationProcessor libs.lombok
+    compile libs.kafka
+    compile libs.swagger
+    implementation libs.mapstruct
+    annotationProcessor libs.mapstruct_processor
+    implementation libs.spring_jpa
+    implementation libs.spring_web
+    developmentOnly libs.spring_devtools
 
-    compile group: 'org.springframework.kafka', name: 'spring-kafka', version: '2.4.6.RELEASE'
-    compile "io.springfox:springfox-swagger2:2.9.2"
-    compile 'io.springfox:springfox-swagger-ui:2.9.2'
-    implementation group: 'org.mapstruct', name: 'mapstruct', version: '1.3.1.Final'
-    annotationProcessor group: 'org.mapstruct', name: 'mapstruct-processor', version: '1.3.1.Final'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }

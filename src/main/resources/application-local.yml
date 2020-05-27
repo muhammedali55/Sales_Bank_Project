@@ -2,9 +2,9 @@ spring:
   datasource:
     platform: mariadb
     driverClassName: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:3306/DBSales?createDatabaseIfNotExist=true
+    url: jdbc:mariadb://localhost:32768/DBSales?createDatabaseIfNotExist=true
     username: root
-    password: password
+    password: root
   jpa:
     show-sql: true
     hibernate:
