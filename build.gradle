@@ -39,7 +39,7 @@ dependencies {
     implementation libs.spring_jpa
     implementation libs.spring_web
     developmentOnly libs.spring_devtools
-
+    testCompile libs.junit
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
