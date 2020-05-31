@@ -34,14 +34,16 @@ public class CustomerController {
     return ResponseEntity.ok(customerService.getCustomers());
   }
 
-
   @PostMapping(CUSTOMER)
   @ApiOperation(value = "save customer", nickname = "saveCustomer", response = ResponseEntity.class)
   public ResponseEntity<Void> saveCustomer(
       @RequestBody @Valid CustomerRequestDto customerRequestDto) {
+
     log.info("controller(saveCustomer) - validated customerRequestDto:{}", customerRequestDto);
     customerService.saveCustomer(customerRequestDto);
+
     return ResponseEntity.ok().build();
   }
+
 
 }
