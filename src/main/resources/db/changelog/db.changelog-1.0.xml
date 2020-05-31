@@ -7,10 +7,10 @@
 
   <changeSet author="M.Ali.Rock" id="202005251856">
 
-    <createTable tableName="table_customer">
+    <createTable tableName="customer">
 
-      <column name="id" type="BIGINT" autoIncrement="true">
-        <constraints nullable="false"  primaryKey="true" unique="true"/>
+      <column autoIncrement="true" name="id" type="BIGINT">
+        <constraints nullable="false" primaryKey="true" unique="true"/>
       </column>
 
       <column name="name" type="VARCHAR(150)">
@@ -29,72 +29,31 @@
         <constraints nullable="true" primaryKey="false" unique="false"/>
       </column>
 
-      <column name="dateOfBirth" type="TIME">
+      <column name="date_of_birth" type="TIME">
         <constraints nullable="true" primaryKey="false" unique="false"/>
       </column>
 
     </createTable>
 
-    <createTable tableName="table_account">
+    <createTable tableName="account">
 
-      <column name="id" type="BIGINT" autoIncrement="true">
+      <column autoIncrement="true" name="id" type="BIGINT">
         <constraints nullable="false" primaryKey="true" unique="true"/>
       </column>
 
       <column name="customer_id" type="BIGINT">
-        <constraints nullable="false" primaryKey="false" unique="false"/>
-      </column>
-
-      <column name="account_type_id" type="BIGINT">
-        <constraints nullable="false" primaryKey="false" unique="true"/>
+        <constraints nullable="true" primaryKey="false" unique="false"/>
       </column>
 
       <column name="account_number" type="VARCHAR(150)">
         <constraints nullable="true" primaryKey="false" unique="false"/>
       </column>
 
-      <column name="balance" type="CURRENCY">
-        <constraints nullable="false" primaryKey="false" unique="false"/>
-      </column>
-    </createTable>
-
-    <createTable tableName="table_account_type">
-
-      <column name="id" type="BIGINT" autoIncrement="true">
-        <constraints nullable="false" primaryKey="true" unique="true"/>
-      </column>
-
-      <column name="type" type="VARCHAR(150)">
-        <constraints nullable="false" primaryKey="false" unique="false"/>
-      </column>
-    </createTable>
-
-    <createTable tableName="table_account_transactions">
-
-      <column name="id" type="BIGINT" autoIncrement="true">
-        <constraints nullable="false" primaryKey="true" unique="true"/>
-      </column>
-
-      <column name="customer_id" type="BIGINT">
-        <constraints nullable="false" primaryKey="false" unique="false"/>
-      </column>
-
-      <column name="operation" type="VARCHAR(150)">
+      <column name="currency" type="VARCHAR(3)">
         <constraints nullable="true" primaryKey="false" unique="false"/>
       </column>
-
-      <column name="amount" type="CURRENCY">
-        <constraints nullable="false" primaryKey="false" unique="false"/>
-      </column>
-
-      <column name="operation_date" type="TIME">
-        <constraints nullable="true" primaryKey="false" unique="false"/>
-      </column>
-
-      <column name="account_id" type="BIGINT">
-        <constraints nullable="false" primaryKey="false" unique="false"/>
-      </column>
     </createTable>
+
 
   </changeSet>
 </databaseChangeLog>

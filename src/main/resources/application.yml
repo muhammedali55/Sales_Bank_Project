@@ -1,12 +1,12 @@
 # please don't put any local settings to application.yml
 server:
-  port: 8080
+  port: 9093
 
 spring:
   datasource:
     platform: mariadb
     driverClassName: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:3306/DBSales?createDatabaseIfNotExist=true
+    url: jdbc:mariadb://localhost:3306/testdb?createDatabaseIfNotExist=true
     username: root
     password: password
   jpa:
@@ -18,8 +18,10 @@ spring:
     enabled: true
     change-log: classpath:/db/changelog/db.changelog-master.xml
 
-kafka:
-  logging.level.root: INFO
-  com.education.kafka.addres: 127.0.0.1:9092
-  com.education.kafka.topic: my-topic
-  com.education.kafka.group.id: my-group
+kafka.logging.level.root: INFO
+kafka.com.education.address: 127.0.0.1:9092
+kafka.com.education.topic: test-topic
+kafka.com.education.consumer.groupId: defaultGrpId
+kafka.com.education.consumer.clientId: defaultClId
+kafka.request.timeout.ms: 20000
+kafka.bootstrap.servers: http://localhost:9092

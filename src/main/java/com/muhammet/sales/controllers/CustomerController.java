@@ -31,10 +31,9 @@ public class CustomerController {
 
   @GetMapping()
   public ResponseEntity<List<Customer>> getCustomers() {
-    return ResponseEntity.ok(customerService.getCustomers());  // please response as a dto
+    return ResponseEntity.ok(customerService.getCustomers());
   }
 
-  // get customer by key please add this method
 
   @PostMapping(CUSTOMER)
   @ApiOperation(value = "save customer", nickname = "saveCustomer", response = ResponseEntity.class)

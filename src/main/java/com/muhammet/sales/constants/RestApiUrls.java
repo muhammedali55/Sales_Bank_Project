@@ -6,6 +6,7 @@ public class RestApiUrls {
   public static final String CUSTOMERS = "/customers";
   public static final String CUSTOMER = "/customer";
   public static final String CUSTOMER_BY_KEY = "/{customerKey}";
+  public static final String KAFKA = "/kafka";
 
 
 }

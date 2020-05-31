@@ -14,13 +14,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CustomerRequestDto implements Serializable {
 
+
   @NotNull
+  @Size(max = 50, message = "name must not be greater than 50 characters")
   String name;
 
   @NotNull
   String surname;
 
-  @Size(min = 2, max = 18)
   String phone;
 
   Date birth;

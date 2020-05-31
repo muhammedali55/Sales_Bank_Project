@@ -28,17 +28,18 @@ repositories {
 
 dependencies {
 
-    compile libs.mariadb
-    compile libs.liquibase
+    implementation libs.mariadb
+    implementation libs.liquibase
     compileOnly libs.lombok
     annotationProcessor libs.lombok
-    compile libs.kafka
-    compile libs.swagger
+    implementation libs.kafka
+    implementation libs.swagger
+    implementation libs.swaggerui
     implementation libs.mapstruct
-    annotationProcessor libs.mapstruct_processor
-    implementation libs.spring_jpa
-    implementation libs.spring_web
-    developmentOnly libs.spring_devtools
+    annotationProcessor libs.mapstructProcessor
+    implementation libs.springJpa
+    implementation libs.springWeb
+    developmentOnly libs.springDevtools
     testCompile libs.junit
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
