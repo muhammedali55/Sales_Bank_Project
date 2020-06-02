@@ -5,6 +5,8 @@
 //Note: Recompile with -Xlint:deprecation for details.
 // Please check it out ...
 
+ // .contentType(APPLICATION_JSON_VALUE)  // SPRING 5.1.9 UPDATE PLEASE
+                // APPLICATION_JSON_UTF8_VALUE Kullanımdan kaldırıldığı için yerine bu enum kullanılmıştır.
 
 
 

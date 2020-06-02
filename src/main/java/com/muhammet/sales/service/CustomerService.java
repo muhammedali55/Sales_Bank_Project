@@ -1,6 +1,7 @@
 package com.muhammet.sales.service;
 
 import com.muhammet.sales.dto.request.CustomerRequestDto;
+import com.muhammet.sales.dto.response.CustomerResponseDto;
 import com.muhammet.sales.mapper.CustomerMapper;
 import com.muhammet.sales.repository.CustomerRepository;
 import com.muhammet.sales.repository.entity.Customer;
@@ -17,6 +18,11 @@ public class CustomerService {
   CustomerMapper customerMapper;
   @Autowired
   private CustomerRepository customerRepository;
+
+  public CustomerResponseDto getCustomerByKey(long id){
+    Customer customer =customerRepository.getOne(id);
+    return  customerMapper.toCustomerResponseDto(customer);
+  }
 
   public List<Customer> getCustomers() {
     return customerRepository.findAll();

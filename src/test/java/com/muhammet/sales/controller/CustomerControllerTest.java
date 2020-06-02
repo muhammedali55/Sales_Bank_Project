@@ -7,6 +7,7 @@ import static com.muhammet.sales.util.ModelFactory.buildCustomerRequestDto;
 import static com.muhammet.sales.utils.JsonUtils.convertToJson;
 import static org.mockito.Mockito.doNothing;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -56,7 +57,8 @@ public class CustomerControllerTest {
     doNothing().when(customerService).saveCustomer(customerRequestDto);
     this.mockMvc
         .perform(post(CUSTOMER_MANAGER_API_VERSION + CUSTOMERS + CUSTOMER)
-            .contentType(APPLICATION_JSON_UTF8_VALUE)  // SPRING 5.1.9 UPDATE PLEASE
+            .contentType(APPLICATION_JSON_VALUE)  // SPRING 5.1.9 UPDATE PLEASE
+                // APPLICATION_JSON_UTF8_VALUE Kullanımdan kaldırıldığı için yerine bu enum kullanılmıştır.
             .content(convertToJson(customerRequestDto)))
         .andExpect(status().isOk());
   }

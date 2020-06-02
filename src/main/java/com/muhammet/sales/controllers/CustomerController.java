@@ -1,10 +1,7 @@
 package com.muhammet.sales.controllers;
 
-import static com.muhammet.sales.constants.RestApiUrls.CUSTOMER;
-import static com.muhammet.sales.constants.RestApiUrls.CUSTOMERS;
-import static com.muhammet.sales.constants.RestApiUrls.CUSTOMER_MANAGER_API_VERSION;
-
 import com.muhammet.sales.dto.request.CustomerRequestDto;
+import com.muhammet.sales.dto.response.CustomerResponseDto;
 import com.muhammet.sales.repository.entity.Customer;
 import com.muhammet.sales.service.CustomerService;
 import io.swagger.annotations.Api;
@@ -20,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import static com.muhammet.sales.constants.RestApiUrls.*;
+
 @RestController
 @RequestMapping(CUSTOMER_MANAGER_API_VERSION + CUSTOMERS)
 @Api(value = "Customer Manager Rest APIs")
@@ -33,6 +32,12 @@ public class CustomerController {
   public ResponseEntity<List<Customer>> getCustomers() {
     return ResponseEntity.ok(customerService.getCustomers());
   }
+
+  @GetMapping(CUSTOMER_BY_KEY)
+  public ResponseEntity<CustomerResponseDto> getCustomerFindByKey(long customerKey){
+      return ResponseEntity.ok(customerService.getCustomerByKey(customerKey));
+  }
+
 
   @PostMapping(CUSTOMER)
   @ApiOperation(value = "save customer", nickname = "saveCustomer", response = ResponseEntity.class)
