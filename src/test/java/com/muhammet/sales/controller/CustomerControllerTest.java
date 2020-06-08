@@ -1,14 +1,13 @@
 package com.muhammet.sales.controller;
 
-import static com.muhammet.sales.constants.RestApiUrls.CUSTOMER;
-import static com.muhammet.sales.constants.RestApiUrls.CUSTOMERS;
-import static com.muhammet.sales.constants.RestApiUrls.CUSTOMER_MANAGER_API_VERSION;
+import static com.muhammet.sales.constants.RestApiUrls.*;
 import static com.muhammet.sales.util.ModelFactory.buildCustomerRequestDto;
 import static com.muhammet.sales.utils.JsonUtils.convertToJson;
 import static org.mockito.Mockito.doNothing;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.muhammet.sales.controllers.CustomerController;
@@ -61,6 +60,16 @@ public class CustomerControllerTest {
                 // APPLICATION_JSON_UTF8_VALUE Kullanımdan kaldırıldığı için yerine bu enum kullanılmıştır.
             .content(convertToJson(customerRequestDto)))
         .andExpect(status().isOk());
+  }
+
+  @Test
+  public void get_customer_by_id_return_success() throws Exception{
+    this.mockMvc
+            .perform(post(CUSTOMER_MANAGER_API_VERSION+CUSTOMERS)
+                    //.param("customerKey")
+                    //.content(convertToJson("1")))
+                    .param("customerKey","1"))
+            .andExpect(status().isOk());
   }
 
 

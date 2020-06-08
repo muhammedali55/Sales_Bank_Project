@@ -1,11 +1,11 @@
 package com.muhammet.sales.service;
 
 
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.anyList;
+import static org.mockito.Mockito.*;
 
 import com.muhammet.sales.dto.request.CustomerRequestDto;
+import com.muhammet.sales.dto.response.CustomerResponseDto;
 import com.muhammet.sales.mapper.CustomerMapper;
 import com.muhammet.sales.repository.CustomerRepository;
 import com.muhammet.sales.repository.entity.Customer;
@@ -17,6 +17,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
 @RunWith(MockitoJUnitRunner.class)
@@ -33,6 +35,7 @@ public class CustomerServiceTest {
   private CustomerService customerService;
 
 
+
   @Test
   public void save_customer_return_success() {
     CustomerRequestDto customerRequestDto = ModelFactory.buildCustomerRequestDto();
@@ -40,6 +43,15 @@ public class CustomerServiceTest {
     when(customerMapper.toCustomer(customerRequestDto)).thenReturn(customer);
     customerService.saveCustomer(customerRequestDto);
     verify(customerRepository, times(1)).save(customer);
+  }
+  @Test
+  public  void get_customer_by_key_success(){
+    CustomerResponseDto customerResponseDto = ModelFactory.buildcustomerResponseDto();
+    Customer customer = ModelFactory.buildCustomer();
+    lenient().when(customerRepository.getOne(1L)).thenReturn(customer);
+    customerService.getCustomerByKey(1L);
+    verify(customerRepository,times(1)).getOne(1L);
+    lenient().when(customerService.getCustomerByKey(1L)).thenReturn(customerResponseDto);
   }
 
 
